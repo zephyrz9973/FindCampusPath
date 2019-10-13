@@ -1,0 +1,26 @@
+CSE 331 Homework.  Answers to hw5-part 2
+Edit this file to supply your answers.
+
+Name:  Xuanhe Zhou
+
+Problem 1. (Written exercises)
+
+(a)
+The collection of edges is the easiest to implement and space complexity is low, but it hard to represent the relationship between node and edges.
+Adjacency List perform better on run-time complexity and the space-complexity than adjacency matrix in general (i number of edges and j number of nodes).
+However, it make implementation harder than adjacency matrix when the relationship between nodes are super complex. Adjacency has squared run-time complexity
+and space-complexity but implementation is easier when dealing with a super complex map.
+
+(b)I choose the adjacency list because since we are implementing the campus map of UW, the number of main buildings and the path between main building
+should not be so complex. Also, Adjacency List have better run-time and space-complexity and easier to visualize and implement for me so I choose it.
+
+Problem 4.
+I have made large changes to my original design according to the feedback.
+    The specs that I changed besides minor change due to the change of original design are these:
+    First I change Abstract Invariant: No such thing called departure and destination so I deleted it. the node set, edge set and graph itself can't be null because they can't be nothing
+    Also I add that node in graph have child means child is in the graph because otherwise the relationship between parent and child is undefined
+    Then I deleted all of the @requires field to make my spec stronger and so make the code easier to use later in the quarter when using it to implementing other class. In order
+    to handle the null case, for method that do not return boolean for nulls I throw Exception instead.
+
+    For the tests, I add the cyclic graph tests and the self-pointed edge test besides changing the old test according to the new design. The cyclic graph test and the self-pointed edges
+    are two interesting case recommended by the feedback of part1 and they can help me to verify a wider behavior of the Graph ADT.

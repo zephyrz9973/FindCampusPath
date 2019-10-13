@@ -1,0 +1,7 @@
+#Test Case when startNode is the same node of equals
+
+#Create the graph
+LoadGraph graph1 marvelTest.tsv
+
+#find path for same node
+FindPath graph1 Cat Cat

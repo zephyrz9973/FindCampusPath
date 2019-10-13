@@ -1,0 +1,11 @@
+#Test the behavior while start node is equal to the end node
+#Create a graph
+created graph graph1
+
+added node A to graph1
+added node B to graph1
+
+added edge 10.000 from A to B in graph1
+
+path from A to A:
+total cost: 0.000

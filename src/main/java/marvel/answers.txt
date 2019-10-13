@@ -1,0 +1,11 @@
+CSE 331 Homework.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Zephyr Zhou
+
+I changed the field of the graph to just be a map that maps parent nodes' edge set to corresponding parentNode.
+In this way I can get rid of the unnecessary field to speed up my test. I also deleted the GraphNode class to be just
+a string since the name of the node itself can already represent node. Moreover I add the compareTo method to allow the
+edge sort by alphabetical order of the child node it is connecting to and if have the same child node then sort according
+to alphabetical order of label
+

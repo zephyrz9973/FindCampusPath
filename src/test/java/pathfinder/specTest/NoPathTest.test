@@ -1,0 +1,12 @@
+#Test the behavior when no path found
+
+CreateGraph graph2
+
+AddNode graph2 A
+AddNode graph2 B
+AddNode graph2 C
+
+AddEdge graph2 A B 5.0
+AddEdge graph2 A C 4.0
+
+FindPath graph2 B C

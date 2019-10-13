@@ -1,0 +1,14 @@
+#Create the graph
+loaded graph graph1
+
+#list nodes of the graph
+graph1 contains: Cat Jellyfish Pig Snake Turtle
+
+#list child node of one node
+the children of Cat in graph1 are: Pig(Mammal) Pig(Vertebrate) Turtle(Vertebrate)
+
+#list child node of another node
+the children of Jellyfish in graph1 are:
+
+#list child node of last node
+the children of Turtle in graph1 are: Cat(Vertebrate) Pig(Vertebrate) Snake(Reptiles)

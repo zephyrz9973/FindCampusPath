@@ -1,0 +1,7 @@
+#Test Case when startNode is the same node of equals
+
+#Create the graph
+loaded graph graph1
+
+#find path for same node
+path from Cat to Cat:

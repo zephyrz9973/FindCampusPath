@@ -1,0 +1,14 @@
+#Create the graph
+LoadGraph graph1 marvelTest.tsv
+
+#list nodes of the graph
+ListNodes graph1
+
+#list child node of one node
+ListChildren graph1 Cat
+
+#list child node of another node
+ListChildren graph1 Jellyfish
+
+#list child node of last node
+ListChildren graph1 Turtle

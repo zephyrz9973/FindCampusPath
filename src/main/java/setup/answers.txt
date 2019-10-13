@@ -1,0 +1,47 @@
+CSE 331 Homework 3.  Answers to Written questions.
+Edit this file to supply your answers.
+
+Name:  Zephyr Zhou
+
+Problem 6.
+
+(a)
+Because 0 is not a negative number but was throw as an IllegalAgumentException with "0 is negative"
+because of the if statement (x<=0).So I changed the judgement of first if statement from (n<=0) to (n<0),
+so 0 is not consider asnegative anymore
+
+(b)
+When doing the testBaseCase(), we pass in 0 and 0 is captured as an false IllegalArguementException
+thus the test failed abnormally and this is why there is a red mark instead of a cross. The change of
+first if statement from (n<=0) to (n<0) also account for this reason. Because in this way the base
+case of zero will be in the else if and be consider to be 1 and pass the test.
+
+(c)
+For the case of term number 2, the function will falsely think it is in else if statement that (n<=2)
+and execute return 1. So fail the inductive step test. Therefore I change it to (n<2) to
+just include the base case 0 and 1. Also, the Fibonacci Sequence is for every n>=2, n=(n-1)+(n-2) but
+not n=(n-1)-(n-2), so I changed it to a plus sign,
+
+
+Problem 7. 
+
+1.  In the constructor public Ball(double volume){volume=volume}. The wrong thing is that it fail to
+distinguish between the parameter volume and the class variable volume (feature of the object Ball).So I changed
+volume=volume to this.volume=volume. The observer method getVolume always returns 0, but a ball has to have some
+volume. So I changed it to return this.volume so it refer to the volume data of the ball.
+
+2.  It depends. It is a trade off between the storage and the time cost. The first approach would make the time
+cost to execute getVolume() much longer since we are using loop over all balls in the container. However, it save
+the storage by do not requiring additional "file keeper" variable. The second approach would make the storage slightly
+larger in order to store the "file keeper" of the sum of volumes, but it do not require looping over the whole container
+so cost less time to execute the function in every call.
+
+3. (1)One way(I implemented): I add every ball of the iterator to the List and sorted the list according to the comparator
+I wrote based on comparations of balls' volumes. Then convert the list to the iterator by using .iterator() method.
+      The different way: insert the balls according to its volume in the function of add. This can achieved by looping over
+the box and compare the ball's volume that need to be inserted with the volume of all the other balls to find where it
+needs to be inserted. And then convert the box to the iterator using .iterator() function
+  (2) I think the first way is better because the second way will cause the container to be already sorted while not calling
+  function getBallsFromSmallest(). But sometimes client might need a box of unsorted balls which case we do not know. If we
+  don't have to constantly sort Balls of the container, it is better to sort the container while we need it.
+

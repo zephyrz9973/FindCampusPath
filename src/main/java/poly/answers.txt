@@ -1,0 +1,115 @@
+CSE 331 Homework 4.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Zephyr Zhou
+
+Problem 0.
+
+(a)
+r = p * q:
+    set r = 0
+    {Inv: r = p_1*(q_1+q_2+...*q_(n-1))+p_2*(q_1+q_2+...+q_(n-1))+...p_n*(q_1+q_2+...q_(n-1))
+     where p_i is the ith term in p and q_j is the jth term in q}
+    foreach term, p_i, in p:
+        {Inv2: r = r_pre+p_i*q_j}
+        foreach term, q_j, in q:
+            set term_to_add to be p_i * q_j
+                if any term, t_r, in r has the same degree as term_to_add,
+                    then replace t_r in r with the sum of term_to_add and t_r
+                    else insert term_to_add into r as a new form
+
+(b) q = u / v
+    if v's greatest term has degree greater than u
+        return 0
+    else do following:
+        set q = 0
+        set u_origin to be u
+        {Inv: q_i * v + u= u_pre, where q_i is the ith term in q
+         && (u's first term) has degree less or equal to v
+         && (q's first term) has degree less than u
+         && u q has no negative degree}
+         while u first term degree greater than or equal to v first term degree:
+            set q_i to be ((u's first term) divide by (v's first term) )
+            set q to be previous one plus q_i
+            set u = u-q_i * v find remainder to be the dividend
+         set u to be u_origin
+
+(c) u = x^3+x-1
+    v = x+1
+    [if v's greatest term has degree greater than u] No. v's first term degree is 1 smaller than u's first term degree is 3
+            [return 0] Ignored since if statement is not satisfyed
+        [else do following:] Excecute else statement.
+            [set q = 0] Now q=0
+            [set u_origin to be u] u_origin = x^3+x-1
+            while u first term degree greater than or equal to v first term degree:
+
+                Iteration 1: u=x^3+x-1 v=x+1
+                [set q_i to be ((u's first term) divide by (v's first term) )] q_i = x^3/x=x^2
+                [set q to be previous one plus q_i] q = x^2
+                [set u = u-q_i * v find remainder and set it to be the dividend] u = x^3+x-1-(x^2*(x+1))=x^3+x-1-x^3-x^2=-x^2+x-1
+
+                Iteration 2: u=-x^2+x-1 v=x+1
+                [set q_i to be ((u's first term) divide by (v's first term) )] q_i = -x^2/x=-x
+                [do add q_i to q] q=x^2-x
+                [set u = u-q_i * v find remainder and set it to be the dividend] u= -x^2+x-1-(-x*(x+1))=-x^2+x-1+x^2+x=2x-1
+
+                Iteration 3: u=2x-1 v=x+1
+                [set q_i to be ((u's first term) divide by (v's first term) )] q_i = 2x/x=2
+                [set q to be previous one plus q_i] q = x^2-x+2
+                [set u = u-q_i * v find remainder and set it to be the dividend] u = 2x-1-(2*(x+1))=2x-1-2x-1=-2
+             [set u to be u_origin] u=x^3+x-1
+
+
+Problem 1.
+
+(a)
+The constructor RatNum(int n, int d) don't need to reduce form and the void method checkRep()
+don't need to check if gcd equals to 1 or -1, because the requirement is weaker for construction
+and check RI. However, function hash(), equals() and toString() need to reduce the form before
+implementing other steps, because these method either implemented based on reduced forms or requires to return
+reduced forms in specification. Therefore the advantage is that the constructor and checkRep method implementation
+is easier while the disadvantage is that the function rely on reduced form got harder to implement.
+
+(b)
+Class specification indicate that RatNum is a immutable class and the function do not have effect means they cannot
+change the abstract value of existing object. But this implementation obviously change this's numer and denom, thus
+violate both specification.
+
+(c)
+Because before the constructor construct the object, there is no object that created and thus meaningless to check
+the rep invariant for nothing.
+
+Problem 2.
+
+(a)
+I have called the check rep after constructor (reason same as 1(c)), before the observer(because "to see" do nothing
+other than view and code is super simple), and both before and after other methods (to ensure more complex code do not
+violate rep invariant)
+
+(b)
+Constructor RatTerm and checkRep do not need to check or set coeff and expt both to zero since less requirement needed,
+thus their implementation eased as an advantage. However, isZero()have to check both coeff and expt, add(),sub(),mul(),
+div(),differentiate() and antiDifferentiate() all need to include the step of check zero and set both coeff and exit since
+they all rely on fact of expt and coeff both zero or both not, which result in more complex code as a disadvantage.
+
+(c)
+The constructor needs to include the case of NaN and change the exponent of term with coeffi NaN to 0, since the rep invariant
+got stricter. The other method should not be changed since the case of NaN is already handled by individual method’s specification
+accordingly. I prefer to write both of them because it means stronger rep invariant and stronger specification, although make it
+harder to implement, it will be easier to use by client.
+
+Problem 3.
+(a) Reason for include rep invariant check is to make sure the implementation don’t violate it to create meaningless object. I
+included the checkRep in the end of the constructor same reason for 1(c). I also included checkRep()in the beginning and end of
+every non-static method because static method do not have instance for checkRep() to check.
+
+(b)
+As for which is better, it depends on methods that need to be implemented. The advantage should be that the two separate lists
+will ease the client codes which perform operation only among coefficient or exponent. The disadvantage should be it reduce modularity
+of regarding each poly terms as a whole and might leads to complexity while writing code to perform operations on each poly terms as a whole.
+
+Problem 5
+2*x^2+3*x+12
+-1/2*x^2
+12*x^6-12*x^5-3
+5*x^8-x^2-x

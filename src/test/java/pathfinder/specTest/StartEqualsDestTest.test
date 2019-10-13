@@ -1,0 +1,10 @@
+#Test the behavior while start node is equal to the end node
+#Create a graph
+CreateGraph graph1
+
+AddNode graph1 A
+AddNode graph1 B
+
+AddEdge graph1 A B 10.0
+
+FindPath graph1 A A

@@ -1,0 +1,7 @@
+#Test Case with unknown character
+
+#Create the graph
+loaded graph graph1
+
+#find path for unknown node
+unknown character Rabbit

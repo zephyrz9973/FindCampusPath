@@ -1,0 +1,18 @@
+#Test the behavior when there is a double way between two Nodes
+
+CreateGraph graph3
+
+AddNode graph3 A
+AddNode graph3 B
+AddNode graph3 C
+
+AddEdge graph3 A B 5.0
+AddEdge graph3 B A 5.0
+AddEdge graph3 C B 6.0
+AddEdge graph3 B C 6.0
+AddEdge graph3 C A 23.0
+AddEdge graph3 A C 23.0
+
+FindPath graph3 A C
+
+FindPath graph3 C A

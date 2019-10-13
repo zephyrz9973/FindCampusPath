@@ -1,0 +1,89 @@
+CSE 331 Homework.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Xuanhe Zhou
+
+Problem 1. (Written exercises)
+
+(a)
+ 1.  AF(r) = [r.entries[0],r.entries[1]…r.entries[k]]
+            [r.entries[0],r.entries[1]...r.entries[k+1]] if r.enqueue(r.entries[k+1])
+            [r.entries[1],r.entries[2]…r.entries[k]] if r.dequeue()
+        {Rep Invariant:
+             entries != null && entries never contains a null value}
+ 2. AF(r) = [r.entries[front], r.entries[front+1]…r.entries[front+size-1]]
+             [r.entries[front], r.entries[front+1]…r.entries[front+size-1]] if r.enqueue(r.entries[front+size-1])
+             [r.entries[front+1]…r.entries[front+size-1]] if r.dequeue()
+     {Rep Invariant: 
+          entries != null
+    	  for any index i such that 0<=i<size, entries[i]!=null
+    	  size<=entries.length}
+
+
+(b)a,d,g should be the same
+   the other are different
+
+(c)
+1. the method will not expose the representation for sure because the integer is by definition immutable
+2. the method might expose the representation because the type String[] is mutable
+3. the method might expose the representation because the type Date is mutable
+4. the method will not expose the representation because the type String is immutable
+5. the method will not expose the representation because the type Iterator is immutable
+6. It depends on whether Deck is immutable or not. Since a standard deck couldn't change so we will consider it as immutable and so the method will not expose the representation
+
+Problem 2.  (Graph interface/operations)
+I use the addEdge, addNode method with parameter in terms of node so we can do node operations easily. Edge operations is just connecting two nodes, these are the fundametal operation
+for construct a graph .
+The graphContain is an important operation to give an overview of all the nodes the graph have so clients can see the whole map of uw campus although with out path.
+ListChildren operation is where we can associate the concept of parent and child node.
+I didn't write any delete method because since nodes will represent the spot on the campus so delete will have no sense for client to do.
+I write Edges and GraphNode as a separate class because it increase some degree of moduarity to break the graph into edges and nodes so make it more flexible in writing functions towards
+edges and nodes.
+In order to test the method easily, I made the field of Edge public so I can use Junit's assert to determine whether the get method is functioning correctly. I will turn the field
+of Edge to be private so it make more sense in the physical situation where the distance between the spot is stable. The three get method is thus aimed for observe the field and keep the data
+from being accidently modified by clients.
+In the GraphNode class, theSameNode method is prepare for the case that edge point to the same node and the case that there is only one node in the graph.
+
+
+Problem 3.  (Testing strategy)
+My testing strategy is that for each of the method, try to think about any special case
+is more likely to trigger error happens then test the normal case that is less likely
+trigger error.
+For example, for addNode test, I am trying to test in the case that the addNode is
+already found, which may be likely to trigger error rather than returning false.
+Then I am testing the case that the node do not exists in the graph which is a
+case that triggers less error.
+For addedge, I also write about the case that child and parents are not found
+in the graph which might run into the NullPointerException. I also test about
+the zero edge length which the case that the code might fail to combine the two
+node with zero distance betweeen them. Then I have the normal case for them where
+is to add some node and trying to find out if it really enters the correct
+information.
+For graphContain, I simply test on the empty graph which might also through the
+null pointer exception but it is suppose to only return a "". My test is mostly based
+on the usage of the client. Client will not want to see exceptions in this case. For
+any user who is not programmar, returning "" is easier for them to understand no nodes
+are getting print out when the graph is empty. For ListChildren, I did the similar thing
+to test if children and parent not exist and the normal case.
+The testing of the constructor of the graph in this case is just make the functionality right
+like it should return an empty node array with no none existing in it.
+
+For the edge class, for the three get method, I test on the self-pointing edge case
+where the edge is pointing to itself, which is an extreme case. Then I just test for the normal
+case to see if the fields are returned correctly
+The constructure is just to see if the constructed edge is correct about fields
+
+For the GraphNode class, the constructor is also testing about if the construced new object has
+the correct field. For isSame method, I test on whether it behave correctly by separating into case
+whether the name of the node is same or not.
+
+The specification test is testing on the behavior guaranteed by specification only.
+The implementation test is to test if the result of implementation is correctly
+So my specification test is more on different cases that guaranteed by my specification. And implementation
+ test is just to test if the result of implementation is acting correctly
+
+
+
+
+
+

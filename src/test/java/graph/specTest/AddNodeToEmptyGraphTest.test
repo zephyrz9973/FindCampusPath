@@ -1,0 +1,13 @@
+#This is the test for adding node to the graph
+
+#Create a graph
+CreateGraph graph1
+
+#Add one nodes
+AddNode graph1 n1
+
+#list the nodes the graph have
+ListNodes graph1
+
+#list the children of n1
+ListChildren graph1 n1

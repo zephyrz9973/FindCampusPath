@@ -1,0 +1,13 @@
+#Test the behavior when no path found
+
+created graph graph2
+
+added node A to graph2
+added node B to graph2
+added node C to graph2
+
+added edge 5.000 from A to B in graph2
+added edge 4.000 from A to C in graph2
+
+path from B to C:
+no path found

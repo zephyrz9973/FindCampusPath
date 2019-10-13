@@ -1,0 +1,3 @@
+I created a Comparator for both edge class and the path class.
+I also changed the MarvelPathDriver to make the spec test of marvel pass.
+Besides that I changed nothing except the generics.

@@ -1,0 +1,7 @@
+stages:
+  - submission
+
+submit-hw7:
+  stage: submission
+  script: git checkout hw8-final
+  only: ['tags']

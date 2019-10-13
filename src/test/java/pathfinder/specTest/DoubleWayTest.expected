@@ -1,0 +1,24 @@
+#Test the behavior when there is a double way between two Nodes
+
+created graph graph3
+
+added node A to graph3
+added node B to graph3
+added node C to graph3
+
+added edge 5.000 from A to B in graph3
+added edge 5.000 from B to A in graph3
+added edge 6.000 from C to B in graph3
+added edge 6.000 from B to C in graph3
+added edge 23.000 from C to A in graph3
+added edge 23.000 from A to C in graph3
+
+path from A to C:
+A to B with weight 5.000
+B to C with weight 6.000
+total cost: 11.000
+
+path from C to A:
+C to B with weight 6.000
+B to A with weight 5.000
+total cost: 11.000

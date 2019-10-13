@@ -1,0 +1,8 @@
+#Test Case when there is no path between the two nodes
+
+#Create the graph
+loaded graph graph1
+
+#find path for same node
+path from Cat to Jellyfish:
+no path found

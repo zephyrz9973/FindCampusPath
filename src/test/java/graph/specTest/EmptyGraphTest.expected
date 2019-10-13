@@ -1,0 +1,7 @@
+#This is to test the behavior on empty graph
+
+#Create a graph
+created graph graph1
+
+#List nodes of the graph
+graph1 contains:
